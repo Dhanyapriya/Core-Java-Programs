@@ -1,0 +1,52 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s1="Tcs,Training";
+		int length= s1.length();
+        // System.out.println(length);
+        char ct=s1.charAt(5);
+        // System.out.println(ct);
+        String substring=s1.substring(5,8);
+		//System.out.println(substring);
+		int index=s1.indexOf('c');
+    	//System.out.println(index);
+     	int lastindex=s1.lastIndexOf('T');
+	    //System.out.println(lastindex);
+	    String s2=s1.concat("PACET");
+	    //System.out.println(s2);
+	    String replace=s1.replace('T','Z');
+	    //System.out.println(replace);
+	    String lowercase=s1.toLowerCase();
+	    //System.out.println(lowercase);
+	    String uppercase=s1.toUpperCase();
+	    //System.out.println(uppercase);
+	    String ts="  PACET  ".trim();
+	    //System.out.println(ts);
+	    String  [] s3=s1.split(",");
+	    for(String s4:s3){
+	    //System.out.print(s4);
+	    }
+	    boolean st=s1.startsWith("Tcs");
+	    //System.out.println(st);
+	    boolean et=s1.endsWith("Training");
+	    //System.out.println(et);
+	    //System.out.print(s1.replaceFirst("T","Y"));
+	    //System.out.print(s1.replaceAll("Tcs","Amazon"));
+	    String s5="Tcs,Training";
+	    int c=s1.compareTo(s5);
+	    //System.out.println(c);
+	    String s6="TCS training";
+	    int c1=s1.compareToIgnoreCase(s6);
+	    //System.out.println(c);
+	    String s7="Tcs Training";
+	    boolean b=s1.equals(s7);
+	    //System.out.println(b);
+	    String s8="tcs training";
+	    boolean b1=s1.equalsIgnoreCase(s8);
+	    //System.out.println(b1);
+	    //string to char[]-----> .toCharArray()
+	    
+	}
+}

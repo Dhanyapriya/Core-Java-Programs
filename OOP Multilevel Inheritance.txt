@@ -1,0 +1,18 @@
+class A{
+    int salary;
+}
+class B extends A{
+    int bonus;
+}
+class C extends B{
+    int lop;
+}
+public class Main{
+    public static void main(String[] args){
+        C obj=new C();
+        obj.salary=50000;
+        obj.bonus=2000;
+        obj.lop=6;
+        System.out.println("Salary"+obj.salary+" "+"Bonus"+obj.bonus+" "+"Lop"+obj.lop);
+    }
+}

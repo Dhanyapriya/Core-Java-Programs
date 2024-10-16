@@ -1,0 +1,14 @@
+class A{
+    int salary;
+}
+class B extends A{
+    int bonus;
+}
+public class Main{
+    public static void main(String[] args){
+        B obj=new B();
+        obj.salary=50000;
+        obj.bonus=20000;
+        System.out.println("Salary="+obj.salary+" "+"Bonus="+obj.bonus);
+    }
+}
