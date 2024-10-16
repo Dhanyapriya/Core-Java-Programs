@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine().toLowerCase();  
+        int freq[]=new int[26];
+        for(int i=0;i<str.length();i++){
+            char ch=str.charAt(i);
+            if(ch>='a'&&ch<='z'){//to neglect the whitespace
+            int index=ch-'a';
+            freq[index]++;
+            }
+        }
+        int flag=0;
+        for(int i=0;i<freq.length;i++){
+            if(freq[i]==0){
+                flag=1;
+                break;
+            } 
+        }
+        if(flag==0){
+            System.out.println("Panagram");}
+        else{
+            System.out.println("not a Panagram");
+        }
+	}  
+	}
+
