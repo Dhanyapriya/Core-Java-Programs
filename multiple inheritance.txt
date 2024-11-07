@@ -1,0 +1,33 @@
+interface healthy{
+    void healthyfood();
+}
+interface unhealthy{
+    void unhealthyfood();
+}
+class Person implements healthy,unhealthy{
+    public void healthyfood(){
+        System.out.println("Vegetables");
+    }
+    public void unhealthyfood(){
+        System.out.println("Junk Food");
+    }
+}
+    class Person1 implements healthy,unhealthy{
+    public void healthyfood(){
+        System.out.println("Vegetables");
+    }
+    public void unhealthyfood(){
+        System.out.println("Junk Food");
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Person obj=new Person();
+		Person1 obj1=new Person1();
+	    	obj.healthyfood();
+	    	obj.unhealthyfood();
+		    obj1.healthyfood();
+		    obj1.unhealthyfood();
+	}
+} 
