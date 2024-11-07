@@ -1,0 +1,160 @@
+class Node{
+int data;
+Node next;
+Node prev;
+}
+public class Main
+{
+static Node head;
+static void create(int data)
+{
+if(head==null)
+{
+head =new Node();
+head.data=data;
+head.next=head;
+head.prev=head;
+}
+else
+{
+Node newnode=new Node();
+newnode.data=data;
+newnode.next=null;
+newnode.prev=null;
+Node temp=head;
+while(temp.next!=head){
+temp=temp.next;
+}
+newnode.next=head;
+newnode.prev=temp;
+head.prev=newnode;//doubly circular-head.prev=newnode
+temp.next=newnode;
+}
+}
+static void insatbeg(int data)  //insertion at beginning
+{
+Node newnode=new Node();
+Node temp=head;
+newnode.data=data;
+newnode.next=null;
+newnode.prev=null;
+while(temp.next!=head){
+    temp=temp.next;
+}
+newnode.next=head;
+head.prev=newnode;
+head=newnode;
+head.prev=temp;
+temp.next=head;
+}
+static void insatend(int data)  //insertion at end
+{
+Node newnode=new Node();
+newnode.data=data;
+newnode.next=null;
+newnode.prev=null;
+Node temp=head;
+while(temp.next!=head){
+temp=temp.next;
+}
+newnode.prev=temp;
+temp.next=newnode;
+head.prev=newnode;
+newnode.next=head;
+}
+static void insatpos(int data,int pos)// inertion at position
+{
+Node newnode=new Node();
+newnode.data=data;
+newnode.next=null;
+newnode.prev=null;
+Node temp=head;
+//newnode.next=temp;
+for(int i=1;i<pos-1;i++)
+{
+temp=temp.next;
+}
+newnode.next=temp.next;
+newnode.prev=temp;
+temp.next=newnode;
+//head=newnode;
+}
+static void delatbeg(){//Deletion at Beginning
+        Node temp=head;
+        while(temp.next!=head){
+            temp=temp.next;
+        }
+        temp.next=head.next;
+        head=head.next;
+        head.prev=temp;
+    }
+    static void delatend(){//Deletion at Ending
+        Node temp=head;
+        Node temp1=head;
+        while(temp1.next!=head){
+            temp=temp1;
+            temp1=temp1.next;
+        }
+        temp.next=head;
+        head.prev=temp;
+        temp1=null;
+    }
+    static void delatpos(int pos){//Deletion at Position
+        Node temp=head;
+        Node temp1=head;
+        for(int i=1;i<pos;i++){
+            temp=temp1;
+            temp1=temp1.next;
+        }
+        temp.next=null;
+        temp.next=temp1.next;;
+        temp1=null;
+        temp.next.prev=temp;
+    }
+
+static void display()
+{
+if(head==null){
+System.out.println("node is empty");
+}
+else
+{
+Node temp=head;
+do{
+System.out.print(temp.data+" ");
+temp=temp.next;
+}while(temp!=head);
+}System.out.println();
+}
+public static void main(String[] args){
+create(10);
+create(20);
+create(30);
+display();
+insatbeg(40);
+display();
+insatend(50);
+display();
+insatpos(60,3);
+ display();
+ delatbeg();
+ display();
+ delatend();
+ display();
+ delatpos(3);
+ display();
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

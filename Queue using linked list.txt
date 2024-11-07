@@ -1,0 +1,67 @@
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class Queue{
+    Node front,rear;
+    public boolean isEmpty()
+    {
+        return front==null;
+    }
+
+    public void enqueue(int data){
+        Node newnode=new Node(data);
+        if(front==null){
+            front=rear=newnode;
+        }
+        rear.next=newnode;
+         rear=newnode;
+    }
+    public int dequeue(){
+        if(isEmpty()){
+            System.out.println("Queue is Empty");
+        }
+        int delete_element=front.data;
+        front=front.next;
+        if(front==null){
+            rear=null;
+        }
+        return delete_element;
+    }
+    public int peek(){
+        if(isEmpty()){
+            System.out.println("Queue is Empty");
+        }
+        int delete_element=front.data;//or return front.data
+        return delete_element;
+    }
+    public void display(){
+        Node temp=front;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+}
+
+
+public class Main{
+	public static void main(String[] args) {
+	 Queue obj=new Queue();
+	 
+	 obj.enqueue(10);
+	 obj.enqueue(20);
+	 obj.enqueue(30);
+	 obj.enqueue(40);
+	 obj.display();
+	 obj.dequeue();
+	 obj.display();
+	 System.out.println(obj.peek());
+	}
+}
+

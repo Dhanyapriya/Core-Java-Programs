@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+class Node {
+    char data;
+    Node next;
+
+    Node(char data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Main {
+    static Node top;
+
+    Main() {
+        top = null;
+    }
+
+    public void push(char value) {
+        Node newNode = new Node(value);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    public boolean isStackEmpty() {
+        return top == null;
+    }
+
+    public char pop() {
+        if (isStackEmpty()) {
+            System.out.println("Stack Underflow");
+            return '\0';
+        }
+        char poppedElement = top.data;
+        top = top.next;
+        return poppedElement;
+    }
+
+    public char peek() {
+        if (isStackEmpty()) {
+            System.out.println("Stack Underflow");
+            return '\0';
+        }
+        return top.data;
+    }
+
+    public static boolean isMatchingPair(char opening, char closing) {
+        return (opening == '(' && closing == ')') ||
+               (opening == '{' && closing == '}') ||
+               (opening == '[' && closing == ']');
+    }
+
+    public static boolean validateParentheses(String expression) {
+        Main stack = new Main(); 
+
+        for (char ch : expression.toCharArray()) {
+            if (ch == '(' || ch == '{' || ch == '[') {
+                stack.push(ch); // Push operation
+            } else if (ch == ')' || ch == '}' || ch == ']') {
+                // If stack is empty or the top element does not match, return false
+                if (stack.isStackEmpty() || !isMatchingPair(stack.pop(), ch)) {
+                    return false;
+                }
+            }
+        }
+        // If stack is empty, all brackets matched correctly; otherwise, unmatched brackets remain
+        return stack.isStackEmpty();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an Expression : ");
+        String expression = scanner.nextLine();
+
+        if (validateParentheses(expression)) {
+            System.out.println("Valid Expression");
+        } else {
+            System.out.println("Invalid Expression");
+        }
+
+        scanner.close();
+    }
+}

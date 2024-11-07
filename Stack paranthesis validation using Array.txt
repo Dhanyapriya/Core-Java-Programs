@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Stack {
+    private static final int MAX_SIZE = 100;
+    private char[] stack;
+    private int top;
+
+    public Stack() {
+        stack = new char[MAX_SIZE];
+        top = -1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == MAX_SIZE - 1;
+    }
+
+    public void push(char element) {
+        if (!isFull()) {
+            stack[++top] = element;
+        }
+    }
+
+    public char pop() {
+        return isEmpty() ? '\0' : stack[top--];
+    }
+
+    public char peek() {
+        return isEmpty() ? '\0' : stack[top];
+    }
+
+    public static boolean isMatchingPair(char opening, char closing) {
+        return (opening == '(' && closing == ')') ||
+               (opening == '{' && closing == '}') ||
+               (opening == '[' && closing == ']');
+    }
+
+    public static boolean isValidExpression(String expression) {
+        Stack stack = new Stack();
+
+        for (char ch : expression.toCharArray()) {
+            if (ch == '(' || ch == '{' || ch == '[') {
+                stack.push(ch);
+            } else if (ch == ')' || ch == '}' || ch == ']') {
+                if (stack.isEmpty() || !isMatchingPair(stack.pop(), ch)) {
+                    return false;  // Unmatched closing bracket
+                }
+            }
+        }
+        return stack.isEmpty();  // True if all open brackets have been matched
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an expression:");
+        String expression = scanner.nextLine();
+
+        if (isValidExpression(expression)) {
+            System.out.println("Valid Expression.");
+        } else {
+            System.out.println("Invalid Expression");
+        }
+
+        scanner.close();
+    }
+}

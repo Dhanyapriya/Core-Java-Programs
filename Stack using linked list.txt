@@ -1,0 +1,57 @@
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+public class Main
+{
+    static Node top;
+    Main(){ 
+        top=null;
+}
+public void push(int value){
+    Node newnode=new Node(value);
+    newnode.next=top;
+    top=newnode;
+    System.out.print(value+" ");
+}
+public boolean isEmpty(){
+    return top==null;
+}
+public void pop(){
+    if(isEmpty()){
+        System.out.println("Stack Underflow");
+    }
+    int poppedelement=top.data;
+    top=top.next;
+    System.out.println();
+    System.out.println(poppedelement);
+}
+public void peek(){
+    if(isEmpty()){
+        System.out.println("Stack Underflow");
+    }
+    int peekedelement=top.data;
+    System.out.println();
+    System.out.println(peekedelement);
+}
+public  void display(){
+    while(top!=null){
+        System.out.print(top.data+" ");
+        top=top.next;
+    }
+}
+	public static void main(String[] args) {
+	 Main obj=new Main();
+	 obj.push(10);
+	 obj.push(20);
+	 obj.push(30);
+	 obj.pop();
+	 obj.peek();
+	obj.display();
+	}
+}
+

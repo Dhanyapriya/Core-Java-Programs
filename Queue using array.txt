@@ -1,0 +1,122 @@
+import java.util.Scanner;
+
+public class Main {
+    private static final int MAX_SIZE = 100;//we use the size of 100 here only so declared as private  /within class
+    private int[] queue = new int[MAX_SIZE];//within class
+    private int front = -1;//within class
+ private int rear = -1;
+    public boolean isEmpty() {
+        return front == -1||front>rear;
+    }
+
+    public boolean isFull() {
+        return rear == MAX_SIZE - 1;
+    }
+
+    public void enqueue(int element) {
+        if (isFull()) {
+            System.out.println("Queue Overflow. Cannot enqueue more elements.");
+            return;
+        }
+        if(front==-1){
+            front=0;
+        }
+        queue[++rear] = element;
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1;
+        }
+        return queue[front++];
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1;
+        }
+        return queue[front];
+    }
+
+    public void display() {
+        for (int i =front; i <=rear; i++) {
+            System.out.print(queue[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Main queue = new Main();
+        Scanner scanner = new Scanner(System.in);
+        int choice, data;
+
+        while (true) {
+            System.out.println("------------------------------------");
+            System.out.println("    QUEUE IMPLEMENTATION PROGRAM    ");
+            System.out.println("------------------------------------");
+            System.out.println("1. Enqueue");
+            System.out.println("2. Dequeue");
+            System.out.println("3. Peek");
+            System.out.println("4. Is Empty");
+            System.out.println("5. Is Full");
+            System.out.println("6. Exit");
+            System.out.println("7. Display");
+            System.out.println("------------------------------------");
+            System.out.print("Enter your choice: ");
+
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter data to enqueue into the Queue : ");
+                    data = scanner.nextInt();
+                    queue.enqueue(data);
+                    break;
+
+                case 2:
+                    data = queue.dequeue();
+                    if (data != -1)
+                        System.out.println("Popped element: " + data);
+                    break;
+
+                case 3:
+                    data = queue.peek();
+                    if (data != -1)
+                        System.out.println("Front element: " + data);
+                    break;
+
+                case 4:
+                    if (queue.isEmpty())
+                        System.out.println("Queue is empty.");
+                    else
+                        System.out.println("Queue  is not empty.");
+                    break;
+
+                case 5:
+                    if (queue.isFull())
+                        System.out.println("Queue  is full.");
+                    else
+                        System.out.println("Queue  is not full.");
+                    break;
+
+                case 6:
+                    System.out.println("Exiting from the program.");
+                    scanner.close();//disable the user input
+                    System.exit(0);//to exit the program
+                    break;
+
+                case 7:
+                    System.out.println("Display the :");
+                    queue.display();
+                    break;
+
+                default:
+                    System.out.println("Invalid choice, please try again.");
+            }
+
+            System.out.println();
+        }
+    }
+}

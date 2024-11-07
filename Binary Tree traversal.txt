@@ -1,0 +1,59 @@
+class Node{
+    int data;
+    Node left;
+    Node right;
+    Node(int data){  
+        this.data=data;
+       //data=d;
+        left=right=null;
+    }
+}
+public class Main
+{
+    public static void printInOrder(Node node){
+        if(node==null){
+            return;
+        }
+        else{
+            printInOrder(node.left);
+            System.out.print(node.data+" ");
+            printInOrder(node.right);
+        }
+    }
+    public static void printPreOrder(Node node){
+        if(node==null){
+            return;
+        }
+        else{
+            
+            System.out.print(node.data+" ");
+            printInOrder(node.left);
+            printInOrder(node.right);
+        }
+    }
+    public static void printPostOrder(Node node){
+        if(node==null){
+            return;
+        }
+        else{
+            printInOrder(node.left);
+             printInOrder(node.right);
+            System.out.print(node.data+" ");
+           
+        }
+    }
+    
+	public static void main(String[] args) {
+    Node root=new Node(1);
+     root.left=new Node(2);
+     root.right=new Node(3);
+     root.left.left=new Node(4);
+     root.left.right=new Node(5);
+    printInOrder(root);
+    System.out.println();
+    printPreOrder(root);
+     System.out.println();
+    printPostOrder(root);
+    
+	}
+}
